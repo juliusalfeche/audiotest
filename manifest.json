@@ -1,5 +1,5 @@
 {
-    "name": "Left / Right Audio Test",
+    "name": "Audio Test",
     "short_name": "Audio Test",
     "description": "A simple tool to test left and right stereo audio channels.",
     "start_url": "index.html",

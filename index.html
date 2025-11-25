@@ -40,14 +40,12 @@
 
     <script src="script.js"></script>
     <script>
-        // Use a self-executing anonymous function to wrap the script for better scope management
         (() => {
             const currentYearElement = document.getElementById('current-year');
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
             }
 
-            // Service Worker Registration
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('./sw.js')
