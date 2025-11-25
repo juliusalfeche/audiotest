@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Audio Test</title>
+
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="container">
+        <h1>🎧 Left / Right Audio Test</h1>
+        <p>Click a button to play a tone.</p>
+
+        <div class="controls">
+            <button id="test-left" data-pan="-1">Left</button>
+            <button id="test-center" data-pan="0">Both</button>
+            <button id="test-right" data-pan="1">Right</button>
+        </div>
+    </main>
+
+    <footer id="em-footer">
+        <div class="footer-center">
+            <p>
+                <a href="https://github.com/juliusalfeche/audiotest" target="_blank" rel="noopener" aria-label="Audio Test App on GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </p>
+            <p>&copy; <span id="current-year"></span> <b>Audio Test</b></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Use a self-executing anonymous function to wrap the script for better scope management
+        (() => {
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Service Worker Registration
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./sw.js')
+                        .then(registration => {
+                            console.log('ServiceWorker registration successful with scope:', registration.scope);
+                        })
+                        .catch(error => {
+                            console.log('ServiceWorker registration failed:', error);
+                        });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
