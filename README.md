@@ -1,16 +1,54 @@
-# audiotest
+# 🎧 Left / Right Audio Test
 
-# 🎧 Left / Right Audio Test App
+A small web page that plays a short tone in your left ear, right ear, or both, so you can quickly check that your headphones or speakers are working and are not swapped.
 
-A simple, fast, and accessible web application to verify the **stereo channel separation** of your headphones or speakers. Built with vanilla **HTML, CSS, and JavaScript** using the **Web Audio API** for precise audio control.
+**Try it:** https://juliusalfeche.github.io/audiotest/
 
+## How to use
 
+1. Put on your headphones (or face your speakers) and turn the volume to a comfortable level.
+2. Press **Left**, **Both**, or **Right**. A short tone plays (about half a second).
+3. You should hear it only on the side you chose. If it comes from the wrong side, your headphones are on backwards or the audio output is swapped.
 
-## ✨ Features
+Pressing the active button again stops the tone early.
 
-* **Quick Testing:** Immediately plays a 440 Hz sine wave tone upon button click.
-* **Stereo Panning:** Test left channel (`-1`), right channel (`1`), or both channels (`0`).
-* **Web Audio API:** Utilizes `AudioContext` and `StereoPannerNode` for accurate channel control.
-* **Toggle Functionality:** Click a button to start the tone; click it again to stop it. The tone also stops automatically after 0.5 seconds.
-* **PWA Ready:** Includes a basic manifest and service worker setup (`manifest.json` and `sw.js` are referenced, but content is not shown) for potential installation and offline use.
-* **Dark Mode UI:** A clean, dark interface for easy viewing.
+## Features
+
+- Plays a 440 Hz sine tone at a low, headphone-safe volume.
+- Left, right, or both channels, using the browser's Web Audio API (`StereoPannerNode`).
+- Works offline once loaded, and can be installed as an app (PWA).
+- No libraries, no tracking, no external requests. Plain HTML, CSS and JavaScript.
+- Keyboard and screen reader friendly.
+
+## Project structure
+
+```
+audiotest/
+├── index.html          the page
+├── sw.js               service worker (offline support); must stay in the root
+├── manifest.json       app install info
+├── assets/
+│   ├── css/style.css   styling
+│   ├── js/script.js    tone logic
+│   └── icons/          logo (SVG + PNG sizes, maskable version for Android)
+├── LICENSE
+└── README.md
+```
+
+## Run it locally
+
+Service workers need a web server (not just double-clicking the file). From this folder:
+
+```
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000.
+
+## Updating
+
+When you change any file, also change the version in `sw.js` (`CACHE_NAME = 'audio-test-v3'` → `'audio-test-v4'`), so installed copies refresh.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

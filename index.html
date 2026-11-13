@@ -3,61 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Audio Test</title>
-
-    <link rel="icon" type="image/png" href="icon-192.png">
-    <link rel="apple-touch-icon" href="icon-192.png">
-
-    <link rel="manifest" href="manifest.json">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; manifest-src 'self'; worker-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+    <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#4CAF50">
+    <meta name="description" content="A simple tool to check that the left and right channels of your headphones or speakers work and are not swapped.">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Left / Right Audio Test</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
 </head>
 <body>
     <main class="container">
         <h1>🎧 Left / Right Audio Test</h1>
-        <p>Click a button to play a tone.</p>
+        <p>Put on your headphones or face your speakers, then press a button to play a short tone.</p>
 
         <div class="controls">
-            <button id="test-left" data-pan="-1">Left</button>
-            <button id="test-center" data-pan="0">Both</button>
-            <button id="test-right" data-pan="1">Right</button>
+            <button type="button" id="test-left" data-pan="-1" data-label="left">Left</button>
+            <button type="button" id="test-center" data-pan="0" data-label="both">Both</button>
+            <button type="button" id="test-right" data-pan="1" data-label="right">Right</button>
         </div>
+
+        <p id="status" class="sr-only" role="status" aria-live="polite"></p>
     </main>
 
-    <footer id="em-footer">
+    <footer id="site-footer">
         <div class="footer-center">
             <p>
-                <a href="https://github.com/juliusalfeche/audiotest" target="_blank" rel="noopener" aria-label="Audio Test App on GitHub">
-                    <i class="fab fa-github"></i>
+                <a href="https://github.com/juliusalfeche/audiotest" target="_blank" rel="noopener noreferrer" aria-label="Audio Test on GitHub">
+                    <svg class="github-icon" viewBox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
                 </a>
             </p>
-            <p>&copy; <span id="current-year"></span> <b>Audio Test</b></p>
+            <p>&copy; <span id="current-year">2026</span> <b>Audio Test</b></p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
-    <script>
-        (() => {
-            const currentYearElement = document.getElementById('current-year');
-            if (currentYearElement) {
-                currentYearElement.textContent = new Date().getFullYear();
-            }
-
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('./sw.js')
-                        .then(registration => {
-                            console.log('ServiceWorker registration successful with scope:', registration.scope);
-                        })
-                        .catch(error => {
-                            console.log('ServiceWorker registration failed:', error);
-                        });
-                });
-            }
-        })();
-    </script>
 </body>
 </html>

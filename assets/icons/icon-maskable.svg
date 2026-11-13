@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Left / Right Audio Test (maskable)</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#262626"/>
+      <stop offset="1" stop-color="#101010"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <g transform="translate(256 256) scale(0.72) translate(-256 -256)">
+  <path d="M136 292V256A120 120 0 0 1 376 256V292" fill="none" stroke="#E0E0E0" stroke-width="28" stroke-linecap="round"/>
+  <rect x="100" y="268" width="68" height="124" rx="30" fill="#E0E0E0"/>
+  <rect x="344" y="268" width="68" height="124" rx="30" fill="#E0E0E0"/>
+  <rect x="124" y="296" width="20" height="68" rx="10" fill="#4CAF50"/>
+  <rect x="368" y="296" width="20" height="68" rx="10" fill="#4CAF50"/>
+  <g fill="none" stroke="#4CAF50" stroke-width="16" stroke-linecap="round">
+    <path d="M76 304A38 38 0 0 0 76 356"/>
+    <path d="M52 280A64 64 0 0 0 52 380"/>
+    <path d="M436 304A38 38 0 0 1 436 356"/>
+    <path d="M460 280A64 64 0 0 1 460 380"/>
+  </g>
+  </g>
+</svg>
