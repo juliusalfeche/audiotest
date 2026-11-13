@@ -1,6 +1,6 @@
 {
     "id": "./",
-    "name": "Left / Right Audio Test",
+    "name": "Left or Right? Audio Test",
     "short_name": "Audio Test",
     "description": "A simple tool to check the left and right channels of your headphones or speakers.",
     "lang": "en",

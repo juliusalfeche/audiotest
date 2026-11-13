@@ -1,4 +1,4 @@
-# 🎧 Left / Right Audio Test
+# 🎧 Left or Right?
 
 A small web page that plays a short tone in your left ear, right ear, or both, so you can quickly check that your headphones or speakers are working and are not swapped.
 
@@ -58,7 +58,7 @@ Then open http://localhost:8000.
 
 ## Updating
 
-When you change any file, also change the version in `sw.js` (`CACHE_NAME = 'audio-test-v5'` → `'audio-test-v6'`), so installed copies refresh.
+When you change any file, also change the version in `sw.js` (`CACHE_NAME = 'audio-test-v6'` → `'audio-test-v7'`), so installed copies refresh.
 
 ## License
 

@@ -117,7 +117,11 @@ document.querySelector('.controls').addEventListener('click', (event) => {
     startTone(Number(button.dataset.pan), button);
 });
 
-document.getElementById('current-year').textContent = new Date().getFullYear();
+// Copyright years: "2025" in the first year, then "2025–2026", "2025–2027", ... automatically.
+const START_YEAR = 2025;
+const thisYear = new Date().getFullYear();
+document.getElementById('copyright-years').textContent =
+    thisYear > START_YEAR ? START_YEAR + '\u2013' + thisYear : String(START_YEAR);
 
 /* --- Offline support --- */
 if ('serviceWorker' in navigator) {
