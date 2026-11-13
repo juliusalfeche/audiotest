@@ -1,143 +1,192 @@
-/* --- Global Styles & Layout --- */
-body {
-    font-family: sans-serif;
-    background-color: #121212; /* Very Dark Gray */
-    color: #e0e0e0; /* Light Gray text */
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    min-height: 100dvh;
-    
-    /* Layout for Sticky Footer: pushes content up and footer down */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; /* Centers everything horizontally */
+/* Flat, minimal, dark. One accent colour (red). No shadows, borders or gradients. */
+
+:root {
+    /* Same palette as the DLBB forum */
+    --bg: #121212;
+    --surface: #1a1a1a;
+    --surface-hover: #212121;
+    --text: #dddddd;
+    --muted: #9f9f9f;
+    --accent: #d32f2f;
+    --on-accent: #ffffff;
+    --radius: 16px;
 }
 
-/* --- Main Content Container --- */
-.container {
-    background-color: #1f1f1f; /* Slightly lighter gray for card effect */
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* --- Layout --- */
+.page {
+    flex: 1;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.intro {
     text-align: center;
-    max-width: 600px;
-    width: 90%;
-    
-    /* Center vertically within the remaining space */
-    margin: auto 0;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 24px;
 }
 
 h1 {
-    color: #4CAF50; /* Green highlight for the title */
-    margin-bottom: 20px;
+    margin: 0 0 8px;
+    font-size: clamp(1.6rem, 5vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
-/* --- Controls and Buttons --- */
-.controls {
-    margin: 30px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+.lead {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.05rem;
 }
 
-button {
-    background-color: #333; /* Dark button background */
-    color: #e0e0e0;
-    border: 2px solid #4CAF50;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s, border-color 0.2s, opacity 0.3s;
-    flex: 1 1 150px;
-}
-
-button:hover {
-    background-color: #444;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-button.active {
-    background-color: #4CAF50; /* Green fill when active */
-    color: #121212; /* Dark text for contrast */
-    border-color: #e0e0e0;
-}
-
-button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* --- Footer --- */
-#site-footer {
-    background-color: #121212;
-    color: #e0e0e0;
-    padding: 15px 0;
+.hint {
+    margin: -16px 0 0;
     text-align: center;
-    width: 100%;
-    
-    /* Separator line */
-    border-top: 1px solid #333;
-    
-    /* Ensure it doesn't shrink and stretches to the full width */
-    flex-shrink: 0;
-    align-self: stretch;
+    color: var(--muted);
+    font-size: 0.9rem;
 }
 
-.footer-center {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+/* --- Buttons: three flat tiles, left / both / right --- */
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
-#site-footer p {
-    margin: 5px 0;
-    font-size: 0.9em;
+.controls button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: clamp(150px, 28vw, 210px);
+    padding: 16px;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.15s, color 0.15s, opacity 0.15s;
 }
 
-#site-footer a {
-    color: #4CAF50; /* Green accent color for links */
-    text-decoration: none;
-    transition: color 0.3s;
+.glyph {
+    font-size: clamp(2.75rem, 9vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
 }
 
-#site-footer a:hover {
-    color: #e0e0e0; /* Light gray on hover */
+.name {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
 }
 
-#site-footer .github-icon {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-/* --- Media Queries --- */
-@media (max-width: 480px) {
-    .container {
-        padding: 20px;
-    }
-    .controls {
-        gap: 10px;
-    }
-    button {
-        padding: 10px 15px;
-        font-size: 14px;
-        flex-basis: 100%; /* Stack buttons on very small screens */
+@media (hover: hover) {
+    .controls button:not(.active):not(:disabled):hover {
+        background: var(--surface-hover);
     }
 }
-/* --- Accessibility --- */
-button:focus-visible,
-#site-footer a:focus-visible {
-    outline: 3px solid #e0e0e0;
+
+.controls button.active {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+.controls button.active .name {
+    color: var(--on-accent);
+}
+
+.controls button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.controls button:focus-visible,
+.site-footer a:focus-visible {
+    outline: 3px solid var(--text);
     outline-offset: 3px;
 }
 
+/* --- Footer --- */
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.site-footer a {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 6px;
+    color: inherit;
+    transition: color 0.15s;
+}
+
+.site-footer a:hover {
+    color: var(--text);
+}
+
+/* --- Phones: Left and Right side by side, Both underneath --- */
+@media (max-width: 560px) {
+    .page {
+        padding: 32px 16px;
+        gap: 32px;
+    }
+
+    .controls {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "left right"
+            "both both";
+    }
+
+    #test-left   { grid-area: left; }
+    #test-right  { grid-area: right; }
+    #test-center { grid-area: both; min-height: 110px; }
+
+    .hint {
+        margin-top: -12px;
+    }
+}
+
+/* --- Accessibility --- */
 /* Visible to screen readers only */
 .sr-only {
     position: absolute;
@@ -152,10 +201,8 @@ button:focus-visible,
 }
 
 @media (prefers-reduced-motion: reduce) {
-    button {
+    .controls button,
+    .site-footer a {
         transition: none;
-    }
-    button:active {
-        transform: none;
     }
 }

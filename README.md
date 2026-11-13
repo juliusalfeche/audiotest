@@ -35,6 +35,17 @@ audiotest/
 └── README.md
 ```
 
+## Colors
+
+| Use | Color |
+|---|---|
+| Accent (pressed tile) | `#d32f2f` |
+| Page background | `#121212` |
+| Tiles | `#1a1a1a` (hover `#212121`) |
+| Text / muted text | `#dddddd` / `#9f9f9f` |
+
+All colors are defined once at the top of `assets/css/style.css`.
+
 ## Run it locally
 
 Service workers need a web server (not just double-clicking the file). From this folder:
@@ -47,7 +58,7 @@ Then open http://localhost:8000.
 
 ## Updating
 
-When you change any file, also change the version in `sw.js` (`CACHE_NAME = 'audio-test-v3'` → `'audio-test-v4'`), so installed copies refresh.
+When you change any file, also change the version in `sw.js` (`CACHE_NAME = 'audio-test-v5'` → `'audio-test-v6'`), so installed copies refresh.
 
 ## License
 

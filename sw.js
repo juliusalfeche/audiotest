@@ -1,7 +1,7 @@
 'use strict';
 
 // Change this number whenever you publish an update.
-const CACHE_NAME = 'audio-test-v3';
+const CACHE_NAME = 'audio-test-v5';
 
 // Relative paths so it works under /audiotest/ on GitHub Pages.
 const APP_FILES = [
@@ -11,6 +11,7 @@ const APP_FILES = [
     './assets/css/style.css',
     './assets/js/script.js',
     './assets/icons/icon.svg',
+    './assets/icons/logo-mark.svg',
     './assets/icons/icon-192.png',
     './assets/icons/icon-512.png',
     './assets/icons/icon-maskable-512.png',
